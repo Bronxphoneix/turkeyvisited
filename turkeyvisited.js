@@ -11,7 +11,9 @@ d3.json('tr-cities.json').then(function (data) {
     let svg = d3.select("#map_container").append('svg').attr("width", width).attr("height", height);
 
 
-    let g = svg.append('g').selectAll('path').data(data.features).join('path').attr('d', path).attr('fill', MAP_COLOR).attr('stroke', '#000')
+    let g = svg.append('g').selectAll('path').data(data.features).join('path').attr('d', path).attr('fill', MAP_COLOR).attr('stroke', '#000').attr('id', function (d) {
+            return d.properties.name;
+        })
         .on("mouseover", function (d, i) {
             d3.select(this).attr("fill", HOVER_COLOR)
         })
@@ -29,9 +31,19 @@ d3.json('tr-cities.json').then(function (data) {
             }
             d.noFill = !d.noFill;
         });
+		
+	 fetch("sehirler.txt")
+	.then((response) => {
+  		return response.text();
+	})
+	.then((text) => {
 
+  		const sehirler = text.split(/\r?\n/);
+		for (var i = 0; i < sehirler.length; i++) {
+		document.getElementById(sehirler[i]).setAttribute("fill", HOVER_COLOR)
 
-    console.log(data.features.map((f) => f.properties.name))
+	}	
+	});
 
     g = svg.append('g')
 
