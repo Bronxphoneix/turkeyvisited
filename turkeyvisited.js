@@ -30,15 +30,14 @@ d3.json('tr-cities.json').then(function (data) {
                 d3.select(this).attr("fill", MAP_COLOR);
             }
             d.noFill = !d.noFill;
-        });
-		
-	 fetch("sehirler.txt")
+        });		
+	fetch("sehirler.txt")
 	.then((response) => {
   		return response.text();
 	})
 	.then((text) => {
 
-  		const sehirler = text.split(/\r?\n/);
+  		window.sehirler = text.split(/\r?\n/);
 		for (var i = 0; i < sehirler.length; i++) {
 		document.getElementById(sehirler[i]).setAttribute("fill", HOVER_COLOR)
 
@@ -86,7 +85,9 @@ function downloadMap() {
             ctx.fillStyle = "black";
             ctx.textAlign = "start";
             var textWidth = ctx.measureText("ozanyerli.github.io/turkeyvisited")
-            ctx.fillText("ozanyerli.github.io/turkeyvisited", 10, canvas.height - 25);
+			var yazik = document.getElementById("yazi").value;
+            ctx.fillText(yazik, 10, canvas.height - 25);
+            ctx.fillText('Ziyaret Edilen İl Sayısı : '+ window.sehirler.length, canvas.width - 250, canvas.height - 25);
             
             /*ctx.beginPath();
             ctx.moveTo(0, 0);
