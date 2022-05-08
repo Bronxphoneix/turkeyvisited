@@ -13,21 +13,26 @@ d3.json('tr-cities.json').then(function (data) {
 
     let g = svg.append('g').selectAll('path').data(data.features).join('path').attr('d', path).attr('fill', MAP_COLOR).attr('stroke', '#000').attr('id', function (d) {
             return d.properties.name;
-        })
+        }).attr('boya', 'Hayır')
         .on("mouseover", function (d, i) {
             d3.select(this).attr("fill", HOVER_COLOR)
         })
 
         .on("mouseout", function (d, i) {
-            if (!d.noFill)
-                d3.select(this).attr("fill", MAP_COLOR)
+			if ( d3.select(this).attr("boya") == 'Evet' ) {
+				d3.select(this).attr("fill", HOVER_COLOR)
+			} else {
+				d3.select(this).attr("fill", MAP_COLOR)
+			}
+			
         })
         .on("click", function (d, i) {
-            d.noFill = d.noFill || false;
-            if (!d.noFill) {
+            if ( d3.select(this).attr("boya") == 'Hayır' ) {
                 d3.select(this).attr("fill", HOVER_COLOR);
+                d3.select(this).attr("boya", 'Evet');
             } else {
                 d3.select(this).attr("fill", MAP_COLOR);
+                d3.select(this).attr("boya", 'Hayır');
             }
             d.noFill = !d.noFill;
         });		
@@ -40,6 +45,7 @@ d3.json('tr-cities.json').then(function (data) {
   		window.sehirler = text.split(/\r?\n/);
 		for (var i = 0; i < sehirler.length; i++) {
 		document.getElementById(sehirler[i]).setAttribute("fill", HOVER_COLOR)
+		document.getElementById(sehirler[i]).setAttribute("boya", 'Evet')
 
 	}	
 	});
