@@ -8,4 +8,4 @@ Türkiye'de ziyaret ettiğiniz illeri haritadan işaretleyin ve paylaşın!
 
 demo : https://try.myasustor.com/turkey/
 
-![image](images/turkeyvisited.png)
+
