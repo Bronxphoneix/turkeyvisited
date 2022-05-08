@@ -1,6 +1,6 @@
 # TurkeyVisited
 
-Update : İçindeki sehirler.txt dosyasına ziyaret ettiğiniz şehirleri alt alta yazarsanız, her seferinde tekrar tekrar işaretlemek zorunda kalmazsınız, biraz uğraştırdı ama değdi sanırım,
+Update : Haritayı indir dediğimiz zaman, işaretli haritaları sehirler.txt dosyası olarak kaydeder, daha sonra haritayı yükle diyerek eski haritanızı yükleyebilirsiniz.
 
 Mark the cities you have visited in Turkey and share the map!
 
