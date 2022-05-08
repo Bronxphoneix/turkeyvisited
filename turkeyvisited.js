@@ -1,6 +1,8 @@
 console.log("Hello");
 const HOVER_COLOR = "#EFAE88"
 const MAP_COLOR = "#fff2e3"
+window.sehirler = [];
+
 
 d3.json('tr-cities.json').then(function (data) {
     let width = 1200; height = 800;
@@ -28,27 +30,31 @@ d3.json('tr-cities.json').then(function (data) {
         })
         .on("click", function (d, i) {
             if ( d3.select(this).attr("boya") == 'Hayır' ) {
+				window.sehirler.push(d.properties.name);
                 d3.select(this).attr("fill", HOVER_COLOR);
                 d3.select(this).attr("boya", 'Evet');
             } else {
                 d3.select(this).attr("fill", MAP_COLOR);
                 d3.select(this).attr("boya", 'Hayır');
+				for( var i = 0; i < window.sehirler.length; i++){ 
+				if ( window.sehirler[i] === d.properties.name) { window.sehirler.splice(i, 1); }
+				}
+				
             }
-            d.noFill = !d.noFill;
-        });		
-	fetch("sehirler.txt")
-	.then((response) => {
-  		return response.text();
-	})
-	.then((text) => {
-
-  		window.sehirler = text.split(/\r?\n/);
-		for (var i = 0; i < sehirler.length; i++) {
+        });
+window.openFile = (e) => {
+  const reader = new FileReader(); // filereader
+  reader.readAsText(e.target.files[0]); // read as text
+  reader.onload = () => {
+    const text = reader.result;
+    window.sehirler = text.split(/\r?\n/); // split on every new line
+    	for (var i = 0; i < sehirler.length; i++) {
 		document.getElementById(sehirler[i]).setAttribute("fill", HOVER_COLOR)
 		document.getElementById(sehirler[i]).setAttribute("boya", 'Evet')
 
-	}	
-	});
+	}
+  };
+};		
 
     g = svg.append('g')
 
@@ -74,8 +80,27 @@ d3.json('tr-cities.json').then(function (data) {
 });
 
 function downloadMap() {
-
+	let data =[];
     let div = document.getElementById('map_container')
+	for (var i = 0; i < sehirler.length; i++) 
+	{ data.push(sehirler[i]) }
+	data = data.join('\r\n')
+	const textToBLOB = new Blob([data], { type: 'text/plain' });
+	const sFileName = 'sehirler.txt';	   // The file to save the data.		
+	let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click(); 
+    		
     html2canvas(div).then(
         function (canvas) {
 
