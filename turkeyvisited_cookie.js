@@ -95,8 +95,8 @@ function downloadMap() {
             ctx.fillStyle = "black";
             ctx.textAlign = "start";
             var textWidth = ctx.measureText("ozanyerli.github.io/turkeyvisited")
-			var yazik = document.getElementById("yazi").value;
-            ctx.fillText(yazik, 10, canvas.height - 25);
+	    var leftText = document.getElementById("yazi").value;
+            ctx.fillText(leftText, 10, canvas.height - 25);
             ctx.fillText('Ziyaret Edilen İl Sayısı : '+ window.cities.length, canvas.width - 250, canvas.height - 25);
             
             /*ctx.beginPath();
