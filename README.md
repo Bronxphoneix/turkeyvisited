@@ -5,7 +5,7 @@ Ziyaret edilen il sayısı sağ tarafta otomatik olarak indirdiğiniz haritaya y
 
 Türkiye'de ziyaret ettiğiniz illeri haritadan işaretleyin ve paylaşın!
 
-demo : https://try.myasustor.com/turkey/
+demo : https://bronxphoneix.github.io/turkeyvisited/
 
 Orjinal Kodlar : https://github.com/ozanyerli/turkeyvisited
 
