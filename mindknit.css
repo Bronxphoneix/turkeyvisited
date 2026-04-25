@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background: #e3e2df;
+  color: #222;
+}
+
+.mk-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  background: #2b2b2b;
+  color: #fff2e3;
+}
+
+.mk-header h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+#mk-app {
+  max-width: 900px;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+
+.mk-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  margin-bottom: 1em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mk-card h2 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+.mk-records {
+  list-style: none;
+  padding: 0;
+}
+
+.mk-records li {
+  padding: 0.5em 0;
+  border-bottom: 1px solid #eee;
+}
+
+.mk-records li:last-child {
+  border-bottom: none;
+}
+
+.mk-date {
+  color: #888;
+  font-size: 0.9em;
+  margin-right: 0.75em;
+}
+
+.mk-user {
+  display: inline-block;
+  background: #EFAE88;
+  color: #2b2b2b;
+  border-radius: 4px;
+  padding: 0.1em 0.5em;
+  font-size: 0.8em;
+  margin-right: 0.5em;
+}
+
+button, .mk-btn {
+  cursor: pointer;
+  background: #EFAE88;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  font-size: 0.95em;
+}
+
+button:hover {
+  background: #e8986a;
+}
+
+.mk-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 0.5em;
+}
+
+.mk-form input, .mk-form select, .mk-form textarea {
+  padding: 0.4em 0.6em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+.mk-login {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}

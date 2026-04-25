@@ -1,0 +1,16 @@
+{
+  "users": [
+    { "username": "admin", "role": "admin" }
+  ],
+  "items": [
+    { "id": "kombi", "name": "Kombi" }
+  ],
+  "maintenance": [
+    {
+      "itemId": "kombi",
+      "user": "admin",
+      "date": "2026-04-23",
+      "note": "Kombi bakımı yapıldı."
+    }
+  ]
+}
