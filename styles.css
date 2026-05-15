@@ -1,57 +1,180 @@
-html {
-    height: 100%;
-    background-color: #e3e2df;
-    background-size: cover;
+:root {
+  --accent: #EFAE88;
+  --accent-strong: #e8986a;
+  --map-fill: #fff2e3;
+  --bg: #f5f1ec;
+  --bg-card: #ffffff;
+  --text: #2b2b2b;
+  --text-muted: #777;
+  --border: #e5dfd6;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100%;
 }
 
 #welcome_text {
-    color: #fff2e3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3%;
-    font-family: sans-serif;
-    font-size: 2.5em;
-    text-shadow: 0 0 3.5px #000;
-    font-weight: bold;
+  text-align: center;
+  margin: 1.5em auto 0.25em;
+  font-size: clamp(1.5em, 3vw, 2.25em);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.subnav {
+  text-align: center;
+  margin-bottom: 1.25em;
+  font-size: 0.95em;
+}
+
+.subnav a {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+.subnav a:hover {
+  text-decoration: underline;
+}
+
+#stats_bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+  margin: 0.5em auto 1em;
+  font-size: 1.05em;
+  color: var(--text-muted);
+}
+
+#stats_bar strong {
+  color: var(--text);
 }
 
 #map_container {
-    /*border: 3px solid white;
-    border-radius: 10px; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
-    width: 1250px;
-    height: 550px;
-    background-color: #e3e2df;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: 0.5em;
 }
 
-#download_button {
-    margin-left: 335px;
+#map_container svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75em;
+  max-width: 1200px;
+  margin: 1.25em auto;
+  padding: 0 1em;
+}
+
+.controls .yazi-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.controls .yazi-field input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.55em 0.75em;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95em;
+  background: var(--bg-card);
+}
+
+.controls .yazi-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(239, 174, 136, 0.25);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.55em 1.2em;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--bg-card);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95em;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.05s ease;
+}
+
+.btn:hover {
+  background: var(--accent);
+  color: var(--text);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-strong);
+}
+
+.btn-ghost {
+  border-color: var(--border);
+}
+
+.btn-ghost:hover {
+  background: var(--border);
+}
+
+#hyukle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#map_container path {
+  transition: fill 0.15s ease;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  #welcome_text {
     margin-top: 1em;
-    padding: 0.5em 1.7em;
-    border: 0.16em solid rgb(255, 255, 255);
-    border-radius: 2em;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    color: #000000;
-    text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.253);
-    text-align: center;
-    transition: all 0.2s;
-}
-
-#download_button:hover {
-    color: black;
-    background-color: #EFAE88;
-}
-
-#github_logo {
-    margin-left: 1000px;
-    opacity: 0.5;
+  }
+  .controls {
+    gap: 0.5em;
+  }
+  #stats_bar {
+    flex-direction: column;
+    gap: 0.25em;
+    align-items: center;
+  }
 }
